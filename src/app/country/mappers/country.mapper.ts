@@ -11,7 +11,7 @@ export class CountryMap {
       cca2: item.cca2,
       flag: item.flag,
       flagSvg: item.flags.svg,
-      name: item.translations['spa'].common ?? 'no Hay nombre',
+      name: item.translations['spa'].official ?? 'no Hay nombre',
       population: item.population
 
     }

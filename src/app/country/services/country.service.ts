@@ -53,10 +53,31 @@ export class CountryService {
       })
 
     )
+  }
+
+
+  //informaccion de la capital
+
+  SearchCountryInfo(country: string) {
+
+    const url = `${Api_Url}/alpha/${country}`;
+
+    return this.http.get<RESTCountry[]>(url).pipe(
+
+      map((resp) => CountryMap.mapeoItemRestCountry(resp)),
+      map(countries => countries.at(0)),
+      // delay(2500),
+      catchError((error) => {
+        console.log('Error fetching', error);
+        return throwError(
+          () => new Error(`No se puede obtener paises con ese codigo: ${country}`,)
+        )
+      })
+
+    )
 
 
   }
-
 
 
 
